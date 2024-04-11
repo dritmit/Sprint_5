@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import StellarBurgersLocators
 from conftest import driver_login
+from conftest import driver
 
 
 class TestConstructorSections:
@@ -16,8 +17,6 @@ class TestConstructorSections:
 
         header = driver_login.find_element(*StellarBurgersLocators.FILLINGS_HEADER).text
         assert header == 'Начинки'
-        driver_login.quit()
-
 
     def test_go_to_sauces_in_constructor(self, driver_login):
         (WebDriverWait(driver_login, 10)
@@ -29,7 +28,6 @@ class TestConstructorSections:
 
         header = driver_login.find_element(*StellarBurgersLocators.SAUCES_HEADER).text
         assert header == 'Соусы'
-        driver_login.quit()
 
     def test_go_to_buns_in_constructor(self, driver_login):
         (WebDriverWait(driver_login, 10)
@@ -44,4 +42,3 @@ class TestConstructorSections:
 
         header = driver_login.find_element(*StellarBurgersLocators.BUNS_HEADER).text
         assert header == 'Булки'
-        driver_login.quit()

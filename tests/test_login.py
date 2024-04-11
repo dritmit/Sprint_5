@@ -19,7 +19,6 @@ class TestLogin:
         order_button = driver.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver.quit()
 
     def test_login_personal_account_button_on_main_page(self, driver):
 
@@ -34,7 +33,6 @@ class TestLogin:
         order_button = driver.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver.quit()
 
     def test_login_link_login_on_register_page(self, driver):
 
@@ -54,7 +52,6 @@ class TestLogin:
         order_button = driver.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver.quit()
 
     def test_login_link_login_on_forgot_pass_page(self, driver):
         driver.get(settings.URL + 'forgot-password')
@@ -73,4 +70,3 @@ class TestLogin:
         order_button = driver.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver.quit()

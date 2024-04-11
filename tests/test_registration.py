@@ -1,5 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+
+import helpers
 import settings
 from locators import StellarBurgersLocators
 from conftest import driver
@@ -9,9 +11,9 @@ class TestRegistration:
 
     def test_registration(self, driver):
         driver.get(settings.URL + 'register')
-        driver.find_element(*StellarBurgersLocators.REGISTRATION_NAME_FIELD).send_keys(settings.NEW_NAME)
-        driver.find_element(*StellarBurgersLocators.REGISTRATION_EMAIL_FIELD).send_keys(settings.NEW_NAME)
-        driver.find_element(*StellarBurgersLocators.REGISTRATION_PASS_FIELD).send_keys(settings.NEW_PASSWORD)
+        driver.find_element(*StellarBurgersLocators.REGISTRATION_NAME_FIELD).send_keys(helpers.random_name())
+        driver.find_element(*StellarBurgersLocators.REGISTRATION_EMAIL_FIELD).send_keys(helpers.random_name())
+        driver.find_element(*StellarBurgersLocators.REGISTRATION_PASS_FIELD).send_keys(helpers.random_password())
         driver.find_element(*StellarBurgersLocators.REGISTRATION_BUTTON).click()
 
         (WebDriverWait(driver, 10)
@@ -20,7 +22,6 @@ class TestRegistration:
 
         title = driver.find_element(*StellarBurgersLocators.LOGIN_PAGE_TITLE).text
         assert title == 'Вход'
-        driver.quit()
 
     def test_registration_wrong_password(self, driver):
         driver.get(settings.URL + 'register')
@@ -35,4 +36,3 @@ class TestRegistration:
 
         password_error = driver.find_element(*StellarBurgersLocators.REGISTRATION_PASSWORD_ERROR).text
         assert password_error == 'Некорректный пароль'
-        driver.quit()

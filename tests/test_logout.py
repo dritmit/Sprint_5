@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import StellarBurgersLocators
 from conftest import driver_login
+from conftest import driver
 
 
 class TestTransfers:
@@ -21,4 +22,3 @@ class TestTransfers:
 
         title = driver_login.find_element(*StellarBurgersLocators.LOGIN_PAGE_TITLE).text
         assert title == 'Вход'
-        driver_login.quit()

@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import StellarBurgersLocators
 from conftest import driver_login
+from conftest import driver
 
 
 class TestTransfers:
@@ -18,7 +19,6 @@ class TestTransfers:
         description = driver_login.find_element(*StellarBurgersLocators.PROFILE_PAGE_DESCRIPTION).text
 
         assert description == 'В этом разделе вы можете изменить свои персональные данные'
-        driver_login.quit()
 
     def test_click_constructor_from_account_profile(self,driver_login):
         driver_login.find_element(*StellarBurgersLocators.MAIN_PAGE_PERSONAL_ACCOUNT_BUTTON).click()
@@ -35,9 +35,6 @@ class TestTransfers:
         order_button = driver_login.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver_login.quit()
-
-
 
     def test_click_logo_from_account_profile(self, driver_login):
         driver_login.find_element(*StellarBurgersLocators.MAIN_PAGE_PERSONAL_ACCOUNT_BUTTON).click()
@@ -54,4 +51,3 @@ class TestTransfers:
         order_button = driver_login.find_element(*StellarBurgersLocators.ACCOUNT_PAGE_PLACE_ORDER_BUTTON).text
 
         assert order_button == 'Оформить заказ'
-        driver_login.quit()
